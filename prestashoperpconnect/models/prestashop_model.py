@@ -77,12 +77,6 @@ class prestashop_backend(orm.Model):
             help="You have to put it in 'username' of the PrestaShop "
                  "Webservice api path invite"
         ),
-        'warehouse_id': fields.many2one(
-            'stock.warehouse',
-            'Warehouse',
-            required=True,
-            help='Warehouse used to compute the stock quantities.'
-        ),
         'taxes_included': fields.boolean("Use tax included prices"),
         'import_partners_since': fields.datetime('Import partners since'),
         'import_orders_since': fields.datetime('Import Orders since'),
