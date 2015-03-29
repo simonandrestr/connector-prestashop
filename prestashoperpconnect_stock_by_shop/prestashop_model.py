@@ -26,4 +26,18 @@ from openerp.osv import orm, fields
 
 class prestashop_backend(orm.Model):
     _inherit = 'prestashop.backend'
+    _columns = {
+        'use_stock_by_shop': fields.boolean(u"Stock By Shop", help=u"Prestashop multishop can share product quantities. If you don't share it on your backend, you must activate this option."),
+        'warehouse_id': fields.many2one(
+            'stock.warehouse',
+            'Warehouse',
+            help='Warehouse used to compute the stock quantities.'
+        ),
+    }
+    _defaults = {
+        'use_stock_by_shop': False,
+    }
+
+
+
 

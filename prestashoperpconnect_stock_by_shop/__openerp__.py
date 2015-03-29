@@ -21,22 +21,23 @@
 ###############################################################################
 
 
-{'name': 'Prestashop Connector Stock By Product',
- 'version': '1.0.0',
- 'category': 'Connector',
- 'depends': ['prestashoperpconnect',
-             ],
- 'author': "MyPC,Odoo Community Association (OCA)",
- 'license': 'AGPL-3',
- 'description': """
+{   'name': 'Prestashop Connector Stock By Product',
+    'version': '1.0.0',
+    'category': 'Connector',
+    'depends': ['prestashoperpconnect',
+                ],
+    'author': "MyPC,Odoo Community Association (OCA)",
+    'license': 'AGPL-3',
+    'description': """
 Prestashop Connector Stock By Product
 =====================================
 
 
 
 """,
- 'data': [],
- 'installable': True,
- 'application': False,
+    'data': [
+        'views/backend.xml',
+    ],
+    'installable': True,
+    'application': False,
 }
-
