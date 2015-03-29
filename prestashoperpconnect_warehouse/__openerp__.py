@@ -37,6 +37,7 @@ Control prestashop's warehouses.
 """,
     'data': [
         'views/warehouse.xml',
+        'views/prestashop_model.xml',
     ],
     'installable': True,
     'application': False,

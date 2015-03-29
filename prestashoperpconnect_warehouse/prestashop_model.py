@@ -24,6 +24,9 @@
 ###############################################################################
 
 from openerp.osv import orm, fields
+from openerp.addons.connector.session import ConnectorSession
+from openerp.addons.prestashoperpconnect_warehouse.unit.import_synchronizer import import_warehouses
+
 
 class prestashop_backend(orm.Model):
     _inherit = 'prestashop.backend'
@@ -43,6 +46,15 @@ class prestashop_backend(orm.Model):
             string='Version',
             required=True),
         }
+    
+    def import_warehouses(self, cr, uid, ids, context=None):
+        """ Import prestashop warehouse."""
+        if not isinstance(ids, (list, tuple)):
+            ids = [ids]
+        session = ConnectorSession(cr, uid, context=context)
+        for backend_record in self.browse(cr, uid, ids, context=context):
+            import_warehouses.delay(session, backend_record.id)
+        return True
 
 
 class prestashop_warehouse(orm.Model):
